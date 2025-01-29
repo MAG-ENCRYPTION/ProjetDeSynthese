@@ -1,0 +1,1 @@
+package ProjetDeSyntheseNotification.notification.adapter;

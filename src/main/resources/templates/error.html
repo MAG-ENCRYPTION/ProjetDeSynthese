@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur - Page Non Trouvée</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.querySelector("a").style.transform = "scale(1.1)";
+            }, 1000);
+        });
+    </script>
+</head>
+<body>
+<h1>Oups ! Une erreur s'est produite.</h1>
+<p>La page que vous recherchez est introuvable.</p>
+<a href="/">Retour à l'accueil</a>
+</body>
+</html>
