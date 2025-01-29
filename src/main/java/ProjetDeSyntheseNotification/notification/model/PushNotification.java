@@ -18,33 +18,28 @@ public class PushNotification extends CurrentNotification {
     public PushNotification() {
     }
 
-    public Object getMessage() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMessage'");
+
+    public String getMessage() {
+        return message;
     }
 
-    public Object getSubject() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSubject'");
+    public String getSubject() {
+        return subject;
     }
 
-    public void setMessage(Object message) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setMessage'");
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public void setSubject(Object subject2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setSubject'");
+    public void setSubject(String subject2) {
+        this.subject = subject2;
     }
 
-    public Object getReceiverName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReceiverName'");
+    public String getReceiverName() {
+        return receiverName;
     }
 
-    public void setSenderName(Object receiverName2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setSenderName'");
+    public void setSenderName(String receiverName2) {
+        this.receiverName = receiverName2;
     }
 }

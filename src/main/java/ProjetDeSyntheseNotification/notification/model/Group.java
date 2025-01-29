@@ -15,13 +15,14 @@ public class Group extends PushNotification {
     public Group() {
     }
 
-    public Object getGroupName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getGroupName'");
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setGroupName(Object groupName2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setGroupName'");
+    public void setGroupName(String groupName2) {
+        this.groupName = groupName2;
     }
+
+
+
 }

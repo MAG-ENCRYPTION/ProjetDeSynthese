@@ -26,9 +26,10 @@ public class SmsNotification extends CurrentNotification {
     }
 
     public void setType(String type) {
-
+        this.type = type;
     }
 
     public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

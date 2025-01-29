@@ -9,36 +9,33 @@ public class EmailNotification extends CurrentNotification {
     private Long id;
     private String email;
     private String subject;
+
+
     public void setSubject(String Subject) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setSubject'");
+        this.subject = Subject;
     }
     public void setEmail(String email2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setEmail'");
+        this.email = email2;
     }
     public void setType(String type) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setType'");
+        this.type = type;
     }
     public void setPriority(int priority) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setPriority'");
+        this.priority = priority;
     }
-    public String getSubject() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSubject'");
-    }
+
     public String getEmail() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getEmail'");
+        return email;
     }
+
+    public String getSubject() {
+        return subject;
+    }
+
     public String getType() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getType'");
+        return type;
     }
     public int getPriority() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPriority'");
+        return priority;
     }
 }

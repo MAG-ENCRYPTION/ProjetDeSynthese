@@ -15,4 +15,5 @@ public class CurrentNotification extends Notification {
 
     public CurrentNotification() {
     }
+
 }

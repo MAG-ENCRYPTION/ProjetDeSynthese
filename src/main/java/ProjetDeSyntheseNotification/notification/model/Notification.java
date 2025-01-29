@@ -9,6 +9,14 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     protected String message;
 
     public Notification(String message) {
@@ -18,13 +26,13 @@ public class Notification {
     public Notification() {
     }
 
-    public Object getMessage() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMessage'");
-    }
+   // public Object getMessage() {
+       // return
+        // throw new UnsupportedOperationException("Unimplemented method 'getMessage'");
+   // }
 
-    public void setMessage(Object message2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setMessage'");
-    }
+   // public void setMessage(String message2) {
+    //    this.message = message2;
+      //  throw new UnsupportedOperationException("Unimplemented method 'setMessage'");
+    //}
 }

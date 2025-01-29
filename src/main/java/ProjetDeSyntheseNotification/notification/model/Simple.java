@@ -10,4 +10,7 @@ public class Simple extends PushNotification {
 
     public Simple() {
     }
+
+
+
 }

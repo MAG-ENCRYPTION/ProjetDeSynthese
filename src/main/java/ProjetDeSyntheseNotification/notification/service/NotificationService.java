@@ -32,7 +32,7 @@ public class NotificationService {
 
     public Notification updateNotification(Long id, Notification updatedNotification) {
         return notificationRepository.findById(id).map(notification -> {
-            notification.setMessage(updatedNotification.getMessage());
+            notification.setMessage((String) updatedNotification.getMessage());
             return notificationRepository.save(notification);
         }).orElseThrow(() -> new RuntimeException("Notification not found with id " + id));
     }
