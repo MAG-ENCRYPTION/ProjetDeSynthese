@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerte de Connexion - Freelance Driver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            animation: shake 0.5s ease-in-out;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="header">
+        <img src="logo.png" alt="Freelance Driver Logo" class="logo">
+        Freelance Driver
+    </div>
+    <div class="content">
+        <p class="alert">⚠ Alerte de Connexion Suspecte</p>
+        <p>Bonjour <strong th:text="${username}"></strong>,</p>
+        <p>Nous avons détecté une connexion inhabituelle depuis :</p>
+        <p><strong th:text="${location}">Nkolfoulou, CMR</strong> à <strong th:text="${time}">10:55</strong></p>
+        <p>Si ce n'est pas vous, veuillez changer votre mot de passe immédiatement.</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Let's Go Freelance Driver. Tous droits réservés.</p>
+        <div class="info">
+            <p>📍 Adresse : ENSPY, Yaoundé, Cameroun </p>
+            <p>📞 Assistance : +237 699 33 22 11</p>
+            <p>📧 Email : letsgo@yowyob.com</p>
+            <p>🚗 Roulez en toute liberté avec Let's Go Freelance Driver !</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

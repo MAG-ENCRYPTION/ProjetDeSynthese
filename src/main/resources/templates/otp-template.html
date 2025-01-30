@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code OTP - Freelance Driver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .header {
+            background: #ff6600;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo {
+            max-height: 50px;
+            margin-right: 10px;
+        }
+        .content {
+            padding: 20px;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+        .otp-code {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff6600;
+            background: #ffe6cc;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            background: #ff6600;
+            color: white;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .info {
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="header">
+        <img src="logo.png" alt="Freelance Driver Logo" class="logo">
+        Freelance Driver
+    </div>
+    <div class="content">
+        <p>Bonjour <strong th:text="${username}"></strong>,</p>
+        <p>Votre code OTP est :</p>
+        <div class="otp-code" th:text="${message}">...</div>
+        <p>Ce code est valide pour 10 minutes.</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Let's Go Freelance Driver. Tous droits réservés.</p>
+        <div class="info">
+            <p>📍 Adresse : ENSPY, Yaoundé, Cameroun </p>
+            <p>📞 Assistance : +237 699 33 22 11</p>
+            <p>📧 Email : letsgo@yowyob.com</p>
+            <p>🚗 Roulez en toute liberté avec Let's Go Freelance Driver !</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

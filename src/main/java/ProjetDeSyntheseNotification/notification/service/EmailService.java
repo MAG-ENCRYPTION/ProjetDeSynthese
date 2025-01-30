@@ -11,8 +11,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import org.springframework.http.HttpStatus;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,19 +25,18 @@ public class EmailService {
     private final EMAILNotificationRepository emailNotificationRepository;
     private final JavaMailSender mailSender;
     private final EmailValidator emailValidator;
+    private final TemplateEngine templateEngine;
 
     @Autowired
-    public EmailService(EMAILNotificationRepository emailNotificationRepository, JavaMailSender mailSender, EmailValidator emailValidator) {
+    public EmailService(EMAILNotificationRepository emailNotificationRepository, JavaMailSender mailSender,
+                        EmailValidator emailValidator, TemplateEngine templateEngine) {
         this.emailNotificationRepository = emailNotificationRepository;
         this.mailSender = mailSender;
         this.emailValidator = emailValidator;
+        this.templateEngine = templateEngine;
     }
 
-    /**
-     * Crée une notification email et envoie l'email automatiquement après validation
-     */
     public EMAILNotificationDTO createEmailNotification(EMAILNotificationDTO emailNotificationDTO) {
-        // Vérification de l'email et du message
         String validationError = emailValidator.validateEmail(emailNotificationDTO.getEmail(), emailNotificationDTO.getMessage());
         if (validationError != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, validationError);
@@ -44,8 +45,8 @@ public class EmailService {
         EmailNotification emailNotification = mapToEntity(emailNotificationDTO);
         EmailNotification savedNotification = emailNotificationRepository.save(emailNotification);
 
-        // Envoyer l'email après sauvegarde
-        sendEmail(emailNotificationDTO.getEmail(), emailNotificationDTO.getSubject(), emailNotificationDTO.getMessage());
+        sendStyledEmail(emailNotificationDTO.getEmail(), emailNotificationDTO.getSubject(),
+                emailNotificationDTO.getMessage(), emailNotificationDTO.getType());
 
         return mapToDTO(savedNotification);
     }
@@ -62,7 +63,6 @@ public class EmailService {
     }
 
     public EMAILNotificationDTO updateEmailNotification(Long id, EMAILNotificationDTO updatedEmailNotificationDTO) {
-        // Vérification de l'email et du message
         String validationError = emailValidator.validateEmail(updatedEmailNotificationDTO.getEmail(), updatedEmailNotificationDTO.getMessage());
         if (validationError != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, validationError);
@@ -74,8 +74,8 @@ public class EmailService {
             notification.setMessage(updatedEmailNotificationDTO.getMessage());
             EmailNotification updatedNotification = emailNotificationRepository.save(notification);
 
-            // Envoyer un email après mise à jour
-            sendEmail(updatedEmailNotificationDTO.getEmail(), updatedEmailNotificationDTO.getSubject(), updatedEmailNotificationDTO.getMessage());
+            sendStyledEmail(updatedEmailNotificationDTO.getEmail(), updatedEmailNotificationDTO.getSubject(),
+                    updatedEmailNotificationDTO.getMessage(), updatedEmailNotificationDTO.getType());
 
             return mapToDTO(updatedNotification);
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "EmailNotification not found with id " + id));
@@ -88,23 +88,39 @@ public class EmailService {
         emailNotificationRepository.deleteById(id);
     }
 
-    /**
-     * Méthode pour envoyer un email
-     */
-    private void sendEmail(String to, String subject, String message) {
+    private void sendStyledEmail(String to, String subject, String message, String type) {
         try {
             MimeMessage mail = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(mail, false, "UTF-8");
+            MimeMessageHelper helper = new MimeMessageHelper(mail, true, "UTF-8");
+
+            Context context = new Context();
+            context.setVariable("username", to);
+            context.setVariable("message", message);
+            String templateName = getTemplateNameByType(type);
+            String htmlContent = templateEngine.process(templateName, context);
 
             helper.setTo(to);
             helper.setSubject(subject);
-            helper.setText(message, true); // HTML activé
+            helper.setText(htmlContent, true);
             helper.setFrom("tonemail@gmail.com");
 
             mailSender.send(mail);
         } catch (MessagingException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Échec de l'envoi de l'email");
         }
+    }
+
+    private String getTemplateNameByType(String type) {
+        return switch (type.toUpperCase()) {
+            case "OTP" -> "otp-template";
+            case "ALERTE" -> "alert-template";
+            case "RESERVATION" -> "reservation-template";
+            case "FEEDBACK" -> "feedback-template";
+            case "RESET_PASSWORD" -> "reset-password-template";
+            case "RESERVATION_CONFIRMATION" -> "reservation-confirmation-template";
+            case "RAPPEL" -> "rappel-template";
+            default -> "email-template";
+        };
     }
 
     private EmailNotification mapToEntity(EMAILNotificationDTO dto) {

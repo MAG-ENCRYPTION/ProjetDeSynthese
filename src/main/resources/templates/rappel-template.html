@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rappel de Course - Freelance Driver</title>
+    <style>
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        .reminder {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff6600;
+            animation: pulse 1s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="header">
+        <img src="logo.png" alt="Freelance Driver Logo" class="logo">
+        Freelance Driver
+    </div>
+    <div class="content">
+        <p class="reminder">🚗 Rappel de votre course à venir !</p>
+        <p>Bonjour <strong th:text="${username}"></strong>,</p>
+        <p>N’oubliez pas votre course prévue :</p>
+        <p class="details">Lieu de départ : <span th:text="${departure}"></span>Tsinga</p>
+        <p class="details">Destination : <span th:text="${destination}"></span>Odza</p>
+        <p class="details">Heure de prise en charge : <span th:text="${pickupTime}"></span>10h30</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Let's Go Freelance Driver. Tous droits réservés.</p>
+    </div>
+</div>
+</body>
+</html>

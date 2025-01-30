@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de Réservation - Freelance Driver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .header {
+            background: #ff6600;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo {
+            max-height: 50px;
+            margin-right: 10px;
+        }
+        .content {
+            padding: 20px;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+        .details {
+            font-weight: bold;
+            color: #ff6600;
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            background: #ff6600;
+            color: white;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="header">
+        <img src="logo.png" alt="Freelance Driver Logo" class="logo">
+        Freelance Driver
+    </div>
+    <div class="content">
+        <p>Bonjour <strong th:text="${username}"></strong>,</p>
+        <p>Vous avez accepté une nouvelle course ! Voici les détails :</p>
+        <p class="details">Lieu de départ : <span th:text="${departure}"></span>Tsinga</p>
+        <p class="details">Destination : <span th:text="${destination}"></span>Odza</p>
+        <p class="details">Heure de prise en charge : <span th:text="${pickupTime}"></span>10h30</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Let's Go Freelance Driver. Tous droits réservés.</p>
+    </div>
+</div>
+</body>
+</html>
