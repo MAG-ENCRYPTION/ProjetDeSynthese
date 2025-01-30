@@ -1,6 +1,14 @@
 package ProjetDeSyntheseNotification.notification.dto;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+
 public class PushNotificationDTO extends CurrentNotificationDTO {
+
+    private Long id;
     private String senderName;
     private String receiverName;
     private String subject;

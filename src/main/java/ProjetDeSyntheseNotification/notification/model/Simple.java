@@ -8,8 +8,6 @@ public class Simple extends PushNotification {
         super(message, type, priority, senderName, receiverName, subject);
     }
 
-    public Simple() {
-    }
 
 
 

@@ -9,7 +9,7 @@ public class SmsNotification extends CurrentNotification {
     private String number;
 
     public SmsNotification(String message, String type, int priority, String number) {
-        super(message, type, priority);
+        super( message, type, priority);
         this.number = number;
     }
 

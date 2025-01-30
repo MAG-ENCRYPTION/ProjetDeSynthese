@@ -13,6 +13,7 @@ import java.util.Optional;
 public class PushService {
 
     private final PushNotificationRepository pushNotificationRepository;
+    private PushNotificationDTO dto;
 
     @Autowired
     public PushService(PushNotificationRepository pushNotificationRepository) {
@@ -22,6 +23,8 @@ public class PushService {
     public PushNotification createPushNotification(PushNotificationDTO pushDTO) {
         return pushNotificationRepository.save(pushDTO);
     }
+
+
 
     public List<PushNotification> getAllPushNotifications() {
         return pushNotificationRepository.findAll();

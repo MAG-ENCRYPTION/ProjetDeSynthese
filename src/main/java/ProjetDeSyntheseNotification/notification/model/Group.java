@@ -12,8 +12,7 @@ public class Group extends PushNotification {
         this.groupName = groupName;
     }
 
-    public Group() {
-    }
+
 
     public String getGroupName() {
         return groupName;
