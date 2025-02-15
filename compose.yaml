@@ -1,0 +1,8 @@
+services:
+  scylla:
+    image: scylladb/scylla:latest
+    container_name: scylla-container
+    ports:
+      - "9042:9042"
+    environment:
+      SCYLLA_START_RPC: '0.0.0.0'
