@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:development}
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    config:
+      name: notification-service
+      label: master
+      uri: ${CONFIG_SERVEUR_URL:http://oia-config-server:8080}
+  security:
+    config: 
+      bearer: true
+      openid-discovery: true

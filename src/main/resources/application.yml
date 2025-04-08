@@ -1,27 +1,24 @@
-server:
-    port: 4014
-    error:
-        include-message: always
-eureka:
-    client:
-     serviceUrl:
-        default: http://localhost:8761/eureka
-
 spring:
-    application:
-        name: notification
-    cassandra:
-        local-datacenter: datacenter1
-        keyspace-name: yowyobdbnotification
-        port: 9042
-        contact-points: localhost
+  application:
+    name: notification-service
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:development}
+  main:
+    web-application-type: reactive
 
+logging:
+  level:
+    org.springframework: error
+    org.springframework.security: debug
+    com.yowyob.identity: DEBUG
 
+api:
+  version: v1
+  context: /api/${api.version}
 
-yowyob:
-    openapi:
-        prod-url: http://localhost:4000
-        dev-url: http://localhost:4000
-
-
-# https://drive.google.com/file/d/11_ZogAQTbK1mUdtoc9Z6xKj0tK-4UwfS/view?usp=sharing
+client:
+  super:
+    id: cffe3990-6f0e-11e8-b750-4d8614c940ff
+    secret: $2a$12$.5qlSA.5Gjp9.TRlEflnXukLlYUz/eNRhLgFKubk6PIoL8GM7GzLu
+    scope: trust, system
+    grant-types: password, refresh_token
